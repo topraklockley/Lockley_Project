@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Toprak Lockley" /> @* The one who designed and coded this website. *@
+	<meta name="description" content="Lockley is an e-commerce website where you can find quality products related to superheroes.">
+	<meta name="keywords" content="lockley, eCommerce, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Website Icon -->
+	<link href="/lockley/img/favicon.ico" rel="icon" type="image/x-icon"/>
+
+	<!-- Title -->
+	<title>Lockley | The Best Products for Superhero Fans</title>
+
+	<!-- Google Font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/lockley/css/bootstrap.min.css" />
+	<!-- Font Awesome (All) -->
+	<link rel="stylesheet" href="/lockley/css/all.min.css" />
+	<!-- Flat Icon -->
+	<link rel="stylesheet" href="/lockley/css/flaticon.css" />
+	<!-- Slicknav -->
+	<link rel="stylesheet" href="/lockley/css/slicknav.min.css" />
+	<!-- JQuery UI -->
+	<link rel="stylesheet" href="/lockley/css/jquery-ui.min.css" />
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="/lockley/css/owl.carousel.min.css" />
+	<!-- Animate -->
+	<link rel="stylesheet" href="/lockley/css/animate.css" />
+	<!-- Style -->
+	<link rel="stylesheet" href="/lockley/css/style.css" />
+	
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="/lockley/css/custom.css" />
+</head>
+
+<body>
+	@await Component.InvokeAsync("Header")
+
+	<div>
+		@RenderBody()
+	</div>
+
+	@await Component.InvokeAsync("Footer")
+	
+	<!-- JavaScripts (JQuery & Bootstrap) -->
+	<script src="/lockley/js/jquery-3.2.1.min.js"></script>	
+	<script src="/lockley/js/bootstrap.min.js"></script>
+	<script src="/lockley/js/jquery.slicknav.min.js"></script>
+	<script src="/lockley/js/owl.carousel.min.js"></script>
+	<script src="/lockley/js/jquery.nicescroll.min.js"></script>
+	<script src="/lockley/js/jquery.zoom.min.js"></script>
+	<script src="/lockley/js/jquery-ui.min.js"></script>
+	<script src="/lockley/js/main.js"></script>
+	
+	<!-- Custom JavaScript -->
+	<script src="/lockley/js/custom.js"></script>
+</body>
+</html>

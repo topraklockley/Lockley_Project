@@ -1,0 +1,159 @@
+﻿@model IndexVM
+
+<section class="hero-section">
+	<div class="hero-slider owl-carousel">
+		@foreach (Slide s in Model.Slides.Take(4))
+		{
+			<div class="hs-item set-bg" data-setbg="@s.FilePath">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-6 col-lg-7 text-white">
+							<span>New Arrivals</span>
+							<h2>@s.Title</h2>
+							<a href="@s.Link" class="site-btn sb-white" style="color: black; border: 1px solid black;">DISCOVER</a>
+						</div>
+					</div>
+					<div class="offer-card text-white">
+						<span style="padding-top: 10px">from</span>
+						<h2 style="font-size: 34px; font-weight: bold">$@s.Price</h2>
+						<p>SHOP NOW</p>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="container">
+		<div class="slide-num-holder" id="snh-1"></div>
+	</div>
+</section>
+
+<section class="features-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 p-0 feature">
+				<div class="feature-inner">
+					<div class="feature-icon">
+						<img src="/lockley/img/icons/1.png" alt="Secure Icon">
+					</div>
+					<h2>Fast Secure Payments</h2>
+				</div>
+			</div>
+			<div class="col-md-4 p-0 feature">
+				<div class="feature-inner">
+					<div class="feature-icon">
+						<img src="/lockley/img/icons/2.png" alt="Premium Icon">
+					</div>
+					<h2>Premium Products</h2>
+				</div>
+			</div>
+			<div class="col-md-4 p-0 feature">
+				<div class="feature-inner">
+					<div class="feature-icon">
+						<img src="/lockley/img/icons/3.png" alt="Delivery Icon">
+					</div>
+					<h2>Free & fast Delivery</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="top-letest-product-section">
+	<div class="container">
+		<div class="section-title">
+			<h2>LATEST PRODUCTS</h2>
+		</div>
+		<div class="product-slider owl-carousel">
+			@foreach(Product p in Model.LatestProducts)
+			{
+				<div class="product-item">
+					<div class="pi-pic">
+						@if (p.ProductPictures.Select(x => x.FilePath).FirstOrDefault() != null)
+						{
+							<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="@p.ProductPictures.FirstOrDefault(x => x.ProductID == x.Product.ID).FilePath" alt="@p.Name"></a>
+						}
+						else
+						{
+							<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="/lockley/img/noimage.jpg" alt="no image"></a>
+						}
+
+						<div class="pi-links">
+							<a class="add-card" asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><i class="flaticon-bag"></i><span>SEE DETAILS</span></a>
+							<a class="wishlist-btn"><i class="fa-regular fa-heart"></i></a>
+						</div>
+					</div>
+					<div class="pi-text">
+						<h6>$@p.Price</h6>
+						<p>@p.Name </p>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>
+
+<section class="product-filter-section">
+	<div class="container">
+		<div class="section-title">
+			<h2>BROWSE TOP SELLING PRODUCTS</h2>
+		</div>
+		<div class="row justify-content-center">
+			<ul class="product-filter-menu">
+				@{
+					List<int> existingCategories = new List<int>();
+				}
+				
+				@foreach (Product p in Model.TopSellingProducts.Where(x => x.CategoryID != null))
+				{
+					if(!existingCategories.Contains(p.Category.ID))
+					{
+						<li><a>@p.Category.Name</a></li>
+						existingCategories.Add(p.Category.ID);
+					}
+				}
+			</ul>
+		</div>
+		<div class="row">
+			@foreach(Product p in Model.TopSellingProducts)
+			{
+				<div class="col-lg-3 col-sm-6">
+					<div class="product-item">
+						<div class="pi-pic">
+							@if (p.ProductPictures.Select(x => x.FilePath).FirstOrDefault() != null)
+							{
+								<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="@p.ProductPictures.FirstOrDefault(x => x.ProductID == x.Product.ID).FilePath" alt="@p.Name"></a>								
+							}
+							else
+							{
+								<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="/lockley/img/noimage.jpg" alt="no image"></a>
+							}
+
+							<div class="pi-links">
+								<a class="add-card" asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><i class="flaticon-bag"></i><span>SEE DETAILS</span></a>
+								<a class="wishlist-btn"><i class="fa-regular fa-heart"></i></a>
+							</div>
+						</div>
+						<div class="pi-text">
+							<h6>$@p.Price</h6>
+							<p>@p.Name</p>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="text-center pt-5">
+			<button class="site-btn sb-line sb-dark">LOAD MORE</button>
+		</div>
+	</div>
+</section>
+
+<section class="banner-section">
+	<div class="container">
+		<div class="banner set-bg" data-setbg="/lockley/img/mrknight_banner.jpg">
+			<div class="tag-new">NEW</div>
+			<span style="color: white;">New Arrivals</span>
+			<h2 style="color: white;">Moon Knight Comics</h2>
+			<a asp-controller="category" asp-action="filter" asp-route-catname="comics" asp-route-subcatname="moon-knight-comics" asp-route-subcatid="8" class="site-btn" style="background: white; color: black;">SHOP NOW</a>
+		</div>
+	</div>
+</section>

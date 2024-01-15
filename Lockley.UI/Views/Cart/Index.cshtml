@@ -1,0 +1,86 @@
+﻿@model List<Cart>
+
+<div class="page-top-info">
+	<div class="container">
+		<h4>Your cart</h4>
+		<div class="site-pagination">
+			<a asp-controller="home">Home</a>
+			/
+			<a>Your cart</a>
+		</div>
+	</div>
+</div>
+
+<section class="cart-section spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="cart-table">
+					<h3 style="color: black !important;">Your Cart</h3>
+					<div class="cart-table-warp">
+						<table>
+							<thead>
+								<tr>
+									<th class="product-th">Product</th>
+									<th class="quy-th">Quantity</th>
+									<th class="stock-th">Stock</th>
+									<th class="total-th">Price</th>
+								</tr>
+							</thead>							
+							<tbody>
+								@foreach(Cart c in Model)
+								{
+									if(c.Quantity > c.UnitsInStock)
+									{
+										c.Quantity = c.UnitsInStock;
+									}
+
+									<tr data-product-id="@c.ProductID">
+										<td class="product-col">
+											@if(!string.IsNullOrEmpty(c.ProductPicture))
+											{
+												<img src="@c.ProductPicture" alt="@c.ProductName" style="border: 1px solid black;">
+											}
+											else
+											{
+												<img src="/lockley/img/noimage.jpg" alt="no image" style="border: 1px solid black;">
+											}
+											<div class="pc-title">
+												<h4>@c.ProductName</h4>
+												<p>$@c.Price</p>
+											</div>
+										</td>
+										<td class="quy-col">
+											<div class="quantity">
+												<div class="pro-qty">
+													<input type="text" value="@c.Quantity">
+												</div>
+											</div>
+										</td>
+										<td class="stock-col text-center">
+											<h5>@c.UnitsInStock</h5>
+										</td>
+										<td class="total-col">
+											<h4>$@(c.Price * c.Quantity)</h4>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+					<div class="total-cost">
+						<h6>Total <span>$@Model.Sum(x => x.Price * x.Quantity)</span></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 card-right">
+				<div class="promo-code-form">
+					<input type="text" placeholder="Enter promo code">
+					<button>Submit</button>
+				</div>
+				<a class="site-btn" asp-controller="cart" asp-action="checkout">Proceed to checkout <i class="fa-solid fa-money-bill-1-wave"></i></a>
+				<a class="site-btn sb-dark" asp-controller="home" style="background: white; color: black !important;">Continue shopping <i class="fa fa-shopping-cart"></i></a>
+			</div>
+		</div>
+	</div>
+</section>

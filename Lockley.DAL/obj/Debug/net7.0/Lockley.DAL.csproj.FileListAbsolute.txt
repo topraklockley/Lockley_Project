@@ -1,0 +1,14 @@
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\bin\Debug\net7.0\Lockley.DAL.deps.json
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\bin\Debug\net7.0\Lockley.DAL.runtimeconfig.json
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\bin\Debug\net7.0\Lockley.DAL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\bin\Debug\net7.0\Lockley.DAL.pdb
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.csproj.AssemblyReference.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.AssemblyInfoInputs.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.AssemblyInfo.cs
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.csproj.CoreCompileInputs.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\refint\Lockley.DAL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.pdb
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\Lockley.DAL.genruntimeconfig.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.DAL\obj\Debug\net7.0\ref\Lockley.DAL.dll

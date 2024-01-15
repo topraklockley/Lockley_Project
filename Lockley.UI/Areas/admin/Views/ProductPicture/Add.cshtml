@@ -1,0 +1,81 @@
+﻿@model ProductPicture
+
+<div class="right_col" role="main">
+	<div class="">
+		<div class="page-title">
+			<div class="title_left">
+				<h3>Form Elements</h3>
+			</div>			
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="row">
+			<div class="col-md-12 col-sm-12 ">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>Add Product Picture</h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li>
+								<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<br />
+						<form enctype="multipart/form-data" asp-controller="productpicture" asp-action="insert" asp-route-productid="@ViewBag.ProductID" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+							
+							<input asp-for="@Model.ProductID" value="@ViewBag.ProductID" type="hidden"/>
+							
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Name">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input class="form-control" asp-for="@Model.Name">
+									<span asp-validation-for="@Model.Name"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align">
+									@Html.DisplayNameFor(x => x.FilePath)
+								</label>
+								<div class="col-md-6 col-sm-6">
+									<div class="form-control">
+										<input class="file-request-button" type="file" asp-for="@Model.FilePath">
+									</div>									
+									<span asp-validation-for="@Model.FilePath"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.DisplayIndex">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input class="form-control" asp-for="@Model.DisplayIndex">
+									<span asp-validation-for="@Model.DisplayIndex"></span>
+								</div>
+							</div>
+
+							<div class="ln_solid"></div>
+							<div class="item form-group">
+								<div class="col-md-6 col-sm-6 offset-md-3">
+									<a class="btn btn-primary" asp-controller="productpicture" asp-action="index" asp-route-productid="@ViewBag.ProductID" type="button">Cancel</a>
+									<button class="btn btn-primary" type="reset">Reset</button>
+									<button type="submit" class="btn btn-success">Add</button>
+								</div>
+							</div>
+							@Html.AntiForgeryToken()
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

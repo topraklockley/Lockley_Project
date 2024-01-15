@@ -1,0 +1,185 @@
+﻿@model ProductVM
+
+<div class="page-top-info">
+	<div class="container">
+		<h4>Category Page</h4>
+		<div class="site-pagination">
+			<a href="/">Home</a> /
+			<a href="/">Shop</a>
+		</div>
+	</div>
+</div>
+
+<section class="product-section">
+	<div class="container">
+		<div class="back-link">
+			<a asp-controller="category" asp-action="filter" asp-route-catname="@GeneralTools.URLAdjuster(Model.Product.Category.ParentCategory.Name)" asp-route-subcatname="@GeneralTools.URLAdjuster(Model.Product.Category.Name)" asp-route-subcatid="@Model.Product.CategoryID"> &lt;&lt; Back to Category</a>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="product-pic-zoom">
+					@if (Model.Product.ProductPictures.Select(x => x.FilePath).FirstOrDefault() != null)
+					{
+						<img class="product-big-img img-fluid" src="@Model.Product.ProductPictures.FirstOrDefault().FilePath" alt="@Model.Product.Name">
+					}
+					else
+					{
+						<img class="product-big-img img-fluid" src="/lockley/img/noimage.jpg" alt="no image">
+					}
+				</div>
+				<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+					<div class="product-thumbs-track">
+						@{
+							int isFirst = 0;
+
+							foreach (ProductPicture pp in Model.Product.ProductPictures.Take(8))
+							{
+								if(isFirst == 0)
+								{
+									if (!string.IsNullOrEmpty(pp.FilePath))
+									{
+										<div class="pt active" data-imgbigurl="@pp.FilePath"><img src="@pp.FilePath" class="img-fluid" alt="@pp.Name"></div>
+									}
+									else
+									{
+										<div class="pt" data-imgbigurl="/lockley/img/noimage.jpg"><img src="/lockley/img/noimage.jpg" class="img-fluid" alt="no image"></div>
+									}
+								}
+								else
+								{
+									if (!string.IsNullOrEmpty(pp.FilePath))
+									{
+										<div class="pt" data-imgbigurl="@pp.FilePath"><img src="@pp.FilePath" class="img-fluid" alt="@pp.Name"></div>
+									}
+									else
+									{
+										<div class="pt" data-imgbigurl="/lockley/img/noimage.jpg"><img src="/lockley/img/noimage.jpg" class="img-fluid" alt="no image"></div>
+									}
+								}
+
+								isFirst++;
+							}
+
+							for(int i = 8; isFirst < i; i--)
+							{
+								if(isFirst == 0)
+								{
+									<div class="pt active" data-imgbigurl="/lockley/img/noimage.jpg"><img src="/lockley/img/noimage.jpg" class="img-fluid" alt="no image"></div>
+								}
+								else
+								{
+									<div class="pt" data-imgbigurl="/lockley/img/noimage.jpg"><img src="/lockley/img/noimage.jpg" class="img-fluid" alt="no image"></div>
+								}
+							}
+						}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 product-details">
+				<h2 class="p-title">@Model.Product.Name</h2>
+				<h3 class="p-price">$@Model.Product.Price</h3>
+				<h4 class="p-stock">Available:
+					@if(Model.Product.UnitsInStock > 20)
+					{
+						<span style="color: white;">@Model.Product.UnitsInStock</span>
+					}
+					else if(Model.Product.UnitsInStock <= 20 && Model.Product.UnitsInStock > 0)
+					{
+						<span style="color: red !important; font-size: 14px">@Model.Product.UnitsInStock</span>
+						<br /> <br />
+						<span style="color: red !important; font-size: 13px">Stocks are about to run out! Add to cart now!</span>
+					}
+					else
+					{
+						<span>Out of stock</span>
+					}
+				</h4>
+							
+				<div class="p-rating">
+					<i class="fa-regular fa-star" data-rating="1"></i>
+					<i class="fa-regular fa-star" data-rating="2"></i>
+					<i class="fa-regular fa-star" data-rating="3"></i>
+					<i class="fa-regular fa-star" data-rating="4"></i>
+					<i class="fa-regular fa-star" data-rating="5"></i>
+				</div>
+
+				<div class="p-review">
+					<a>3 reviews</a>|<a>Add your review</a>
+				</div>				
+
+				<div class="quantity">
+					<p>Quantity</p>
+					<div class="pro-qty">
+						<input id="quantityInput1" type="text" value="1">
+					</div>
+				</div>
+
+				<button onclick="AddToCart(@Model.Product.ID, @Model.Product.UnitsInStock)" class="site-btn" style="background: white; color: black;">SHOP NOW</button>
+				
+				<div id="accordion" class="accordion-area">
+					<div class="panel">
+						<div class="panel-header" id="headingOne">
+							<button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" style="color: white;">Details</button>
+						</div>
+						<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+							<div class="panel-body">
+								@Html.Raw(Model.Product.Detail)
+							</div>
+						</div>				
+					</div>
+					<div class="panel">
+						<div class="panel-header" id="headingTwo">
+							<button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" style="color: white;">shipping & returns</button>
+						</div>
+						<div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="panel-body">								
+								<p>@Html.Raw(Model.Product.CargoDetail)</p>
+								<img src="/lockley/img/cards.png" alt="credit cards">
+							</div>
+						</div>
+					</div>				
+				</div>
+				<div class="social-sharing">
+					<a><i class="fa-brands fa-instagram"></i></a>
+					<a><i class="fa-brands fa-x-twitter"></i></a>
+					<a><i class="fa-brands fa-youtube"></i></a>
+					<a><i class="fa-brands fa-facebook"></i></a>
+					<a><i class="fa-brands fa-pinterest"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="related-product-section">
+	<div class="container">
+		<div class="section-title">
+			<h2>RELATED PRODUCTS</h2>
+		</div>
+		<div class="product-slider owl-carousel">
+			@foreach(Product p in Model.RelatedProducts.Take(6))
+			{
+				<div class="product-item">
+					<div class="pi-pic">
+						@if (p.ProductPictures.Select(x => x.FilePath).FirstOrDefault() != null)
+						{
+							<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="@p.ProductPictures.FirstOrDefault().FilePath" alt="@p.Name"></a>
+						}
+						else
+						{
+							<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="/lockley/img/noimage.jpg" alt="no image"></a>
+						}
+						<div class="pi-links">
+							<a class="add-card" asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><i class="flaticon-bag"></i><span>SEE DETAILS</span></a>
+							<a class="wishlist-btn"><i class="fa-regular fa-heart"></i></a>
+						</div>
+					</div>
+					<div class="pi-text">
+						<h6>$@p.Price</h6>
+						<p>@p.Name</p>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

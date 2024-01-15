@@ -1,0 +1,19 @@
+﻿a {
+    cursor: pointer;
+}
+
+.page-title > .title_left{
+    padding: 5px 0 15px 0;
+}
+
+.form-control {
+    padding: 0.20rem 0.5rem;
+}
+
+.file-request-button{
+    width: 45%;
+}
+
+.nav li.current-page {
+    background: none;
+}

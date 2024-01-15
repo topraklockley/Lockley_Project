@@ -1,0 +1,180 @@
+﻿@model CheckOutVM
+
+<div class="page-top-info">
+	<div class="container">
+		<h4>Your cart</h4>
+		<div class="site-pagination">
+			<a asp-controller="home">Home</a> /
+			<a asp-controller="cart" asp-action="index">Your cart</a>
+		</div>
+	</div>
+</div>
+
+<section class="checkout-section spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 order-2 order-lg-1">
+				<form class="checkout-form" method="post" asp-controller="cart" asp-action="placeorder">					
+					<div class="row address-inputs" id="userinformationinputs">
+						<div class="col-md-12">
+							<input type="text" placeholder="Full Name" asp-for="@Model.Order.FullName">
+						</div>
+						<div class="col-md-4">
+							<input type="text" placeholder="Country" asp-for="@Model.Order.Country">
+						</div>
+						<div class="col-md-4">
+							<input type="text" placeholder="City" asp-for="@Model.Order.City">
+						</div>
+						<div class="col-md-4">
+							<input type="text" placeholder="District" asp-for="@Model.Order.District">
+						</div>
+						<div class="col-md-8">
+							<input type="text" placeholder="Phone no." asp-for="@Model.Order.Phone">
+						</div>
+						<div class="col-md-4">
+							<input type="text" placeholder="Zip code" asp-for="@Model.Order.PostalCode">
+						</div>
+						<div class="col-md-12">
+							<input type="text" placeholder="Address" asp-for="@Model.Order.Address">
+						</div>
+					</div>
+					<div class="cf-title">Delivery Information</div>
+					<div class="row shipping-btns">
+						<div class="col-6">
+							<h4 style="color: white">Standard <i class="fa-solid fa-truck"></i></h4>
+						</div>
+						<div class="col-6">
+							<div class="cf-radio-btns">
+								<div class="cfr-item">
+									<input type="radio" name="shipping" id="ship-1">
+									<label for="ship-1">Free</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<h4 style="color: white">Next day delivery <i class="fa-solid fa-truck-fast"></i></h4>
+						</div>
+						<div class="col-6">
+							<div class="cf-radio-btns">
+								<div class="cfr-item">
+									<input type="radio" name="shipping" id="ship-2">
+									<label id="shippingFeeLabel" for="ship-2">$@Model.Order.ShippingFee</label>
+								</div>
+							</div>						
+						</div>
+					</div>
+					
+					<div class="cf-title">Payment Options</div>
+					
+					<div class="row address-inputs">
+						<div class="col-md-12">
+							<select class="form-control selectPaymentOption" asp-for="@Model.Order.PaymentOption" asp-items="@Html.GetEnumSelectList<EPaymentOption>()" onchange="SelectPaymentOption(this)">
+								<option value="">Choose a payment option</option>
+							</select>
+						</div>
+
+						<div class="col-md-12">
+							<div class="PaymentOption creditCard">
+								<br />
+								<h5>Credit Card</h5>
+								<br />
+								<div class="row">
+									<div class="col-md-6">
+										<input type="text" placeholder="Card Owner Name" />
+									</div>
+									<div class="col-md-6">
+										<input type="text" placeholder="Card Number" asp-for="@Model.Order.CardNumber" />
+									</div>
+									<div class="col-md-4">
+										<select class="form-control" asp-for="@Model.Order.CardExpirationM">
+											<option value="">Expiration Month</option>
+
+											@for (int i = 1; i <= 12; i++)
+											{
+												<option value="@i">@i</option>
+											}
+										</select>
+									</div>
+									<div class="col-md-4">
+										<select class="form-control" asp-for="@Model.Order.CardExpirationY">
+											<option value="">Expiration Year</option>
+											
+											@for (int i = DateTime.Now.Year; i <= DateTime.Now.AddYears(10).Year; i++)
+											{
+												<option value="@i">@i</option>
+											}
+										</select>
+									</div>
+									<div class="col-md-4">
+										<input type="text" placeholder="Card CVV" asp-for="@Model.Order.CardCVV" />
+									</div>
+								</div>
+							</div>	
+							<div class="PaymentOption transfer">
+								<br />
+								<h5>Transfer</h5>
+								<br />
+								<p>Don't forget to write the Order Number in the description.</p>
+							</div>
+							<div class="PaymentOption COD">
+								<br />
+								<h5>Cash On Delivery (COD)</h5>
+								<br />
+								<p>Don't forget to check the shipment when it arrives.</p>
+							</div>
+						</div>
+					</div>
+					
+					<button type="submit" class="site-btn submit-order-btn">Place Order</button>
+
+					@Html.AntiForgeryToken()
+				</form>
+			</div>
+			<div class="col-lg-4 order-1 order-lg-2">
+				<div class="checkout-cart">
+					<h3>Your Cart</h3>
+					<ul class="product-list">
+						@foreach(Cart c in Model.Carts)
+						{
+							if (c.Quantity > c.UnitsInStock)
+							{
+								c.Quantity = c.UnitsInStock;
+							}
+							
+							<li>
+								@if(!string.IsNullOrEmpty(c.ProductPicture))
+								{
+									<div class="pl-thumb"><img src="@c.ProductPicture" alt="@c.ProductName"></div>
+								}
+								else
+								{
+									<div class="pl-thumb"><img src="/lockley/img/noimage.jpg" alt="no image"></div>
+								}
+								<h6>@c.ProductName</h6>
+								<p>$@c.Price</p>
+								<p>Quantity: @c.Quantity</p>
+							</li>
+						}
+					</ul>
+					<ul class="price-list">
+						@{
+							decimal totalPrice = Model.Carts.Sum(x => x.Quantity * x.Price);
+						}
+						@if (totalPrice >= 1000)
+						{
+							<li>Total<span>$@totalPrice</span></li>
+							<li>Shipping<span>Free</span></li>
+							<li class="total" id="finalTotal1">Total<span>$@totalPrice</span></li>
+						}
+						else
+						{
+							<li>Total<span>$@totalPrice</span></li>
+							<li id="finalShippingFee2">Shipping<span>Free</span></li>
+							<li class="total" id="finalTotal2">Total<span>$@totalPrice</span></li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

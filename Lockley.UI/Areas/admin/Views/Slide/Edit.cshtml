@@ -1,0 +1,127 @@
+﻿@model Slide
+
+<div class="right_col" role="main">
+	<div class="">
+		<div class="page-title">
+			<div class="title_left">
+				<h3>Form Elements</h3>
+			</div>			
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="row">
+			<div class="col-md-12 col-sm-12 ">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>Edit Slide</h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li>
+								<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" asp-controller="slide" asp-action="add">Add Slide</a>
+								</div>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<br />
+						<form enctype="multipart/form-data" asp-controller="slide" asp-action="edit" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+							<input asp-for="@Model.ID" type="hidden"/>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Title">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input type="text" asp-for="@Model.Title" class="form-control ">
+									<span asp-validation-for="@Model.Title"></span>
+								</div>
+							</div>
+							
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Slogan">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input type="text" asp-for="@Model.Slogan" class="form-control ">
+									<span asp-validation-for="@Model.Slogan"></span>
+								</div>
+							</div>							
+
+							@{
+								TempData["TempFilePath"] = Model.FilePath;
+							}
+							
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align">
+									@Html.DisplayNameFor(x => x.FilePath)
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<div class="form-control">
+										<input class="file-request-button" type="file" asp-for="@Model.FilePath">
+									</div>
+									<span asp-validation-for="@Model.FilePath"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Description">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input class="form-control" asp-for="@Model.Description">
+									<span asp-validation-for="@Model.Description"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Price">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input type="text" asp-for="@Model.Price" class="form-control ">
+									<span asp-validation-for="@Model.Price"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Link">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input type="text" asp-for="@Model.Link" class="form-control ">
+									<span asp-validation-for="@Model.Link"></span>
+								</div>
+							</div>
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.DisplayIndex">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input type="text" asp-for="@Model.DisplayIndex" class="form-control ">
+									<span asp-validation-for="@Model.DisplayIndex"></span>
+								</div>
+							</div>
+
+							<div class="ln_solid"></div>
+							<div class="item form-group">
+								<div class="col-md-6 col-sm-6 offset-md-3">
+									<a class="btn btn-primary" type="button" asp-controller="slide" asp-action="index">Cancel</a>
+									<button class="btn btn-primary" type="reset">Reset</button>
+									<button type="submit" class="btn btn-success">Edit</button>
+								</div>
+							</div>
+							@Html.AntiForgeryToken()
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

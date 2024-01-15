@@ -1,0 +1,127 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sign In</title>
+    <link href="/lockley/img/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link href="/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/admin/vendors/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="/admin/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/admin/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login" style="background-color: #202020; color: white">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content" style="text-shadow: none">
+                    <form asp-action="login" method="post">
+                        <h1>Sign In</h1>
+                        <div>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required="" style="border-radius: 10px"/>
+                        </div>
+                        <div>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required="" style="border-radius: 10px"/>
+                        </div>
+                        <div>
+                            <button class="btn btn-light submit" style="border-radius: 20px; padding: 5px 30px;">Log in</button>
+                            <a class="reset_pass">Lost your password?</a>
+                        </div>
+                        
+                        <span style="color: red">@TempData["Information"]</span>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                New to site?
+                                <a href="#signup" class="to_register"> Create Account </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+
+                            <div>
+                                <a href="/">
+                                    <img src="/lockley/img/logo_3_bg.png" class="img-fluid" />
+                                </a>                              
+                            </div>
+
+                            <br />
+
+                            <div>
+                                <b>©2023 All Rights Reserved.</b>
+                                <p>Privacy and Terms</p>
+                            </div>
+                        </div>
+                        @Html.AntiForgeryToken()
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content" style="text-shadow: none">
+                    <form>
+                        <h1>Create Account</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" required="" style="border-radius: 10px" />
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Email" required="" style="border-radius: 10px" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Password" required="" style="border-radius: 10px" />
+                        </div>
+                        <div>
+                            <a class="btn btn-light submit" href="#" style="border-radius: 15px; padding: 5px 25px">Submit</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Already a member?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            
+                            <div>
+                                <a href="/">
+                                    <img src="/lockley/img/logo_3_bg.png" class="img-fluid" />
+                                </a>
+                            </div>
+
+                            <br />
+
+                            <div>
+                                <b>©2023 All Rights Reserved.</b>
+                                <p>Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

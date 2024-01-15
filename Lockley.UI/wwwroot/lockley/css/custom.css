@@ -1,0 +1,174 @@
+﻿body {
+    background-color: #202020;
+}
+
+header {
+    background-color: white;
+}
+
+.page-top-info {
+    background-color: #202020;
+}
+
+.features-section {
+    background-color: white;
+}
+
+a {
+    cursor: pointer;
+}
+
+.top-letest-product-section h1, .top-letest-product-section h2, .top-letest-product-section h3, .top-letest-product-section h4, .top-letest-product-section h5, .top-letest-product-section h6, 
+.top-letest-product-section p{
+    color: white !important;
+}
+
+.product-filter-section h1, .product-filter-section h2, .product-filter-section h3, .product-filter-section h4, .product-filter-section h5, .product-filter-section h6,
+.product-filter-section p{
+    color: white !important;
+}
+
+.product-filter-section .site-btn.sb-dark.sb-line{
+    background-color: white;
+}
+
+.page-top-info h1, .page-top-info h2, .page-top-info h3, .page-top-info h4, .page-top-info h5, .page-top-info h6,
+.page-top-info p, .page-top-info a{
+    color: white !important;
+}
+
+.cart-section h1, .cart-section h2, .cart-section h3, .cart-section h4, .cart-section h5, .cart-section h6,
+.cart-section p, .cart-section a {
+    color: white !important;
+}
+
+.related-product-section h1, .related-product-section h2, .related-product-section h3, .related-product-section h4, .related-product-section h5, .related-product-section h6,
+.related-product-section p {
+    color: white !important;
+}
+
+.product-details h1, .product-details h2, .product-details h3, .product-details h4, .product-details h5, .product-details h6,
+.product-details p, .back-link a, .product-details a, .product-details span, .product-details #quantityInput1{
+    color: white !important;
+}
+
+.cart-table h1, .cart-table h2, .cart-table h3, .cart-table h4, .cart-table h5, .cart-table h6, .cart-table p{
+    color: black !important;
+}
+
+.total-cost h6{
+    color: white !important;
+}
+
+.total-col {
+    width: 20%;
+}
+
+.cart-table .quantity .pro-qty {
+    border: 1px solid black;
+}
+
+.lockleylogo {
+    max-width: 180px;
+    height: 40px;
+}
+
+#dashboardShortcut {
+    color: white;
+    font-size: 16px;
+    float: right;
+    margin: 3px 150px 0 0;
+}
+
+.logoutShortcut {
+    color: white;
+    font-size: 16px;
+    float: right;
+    margin: 3px 70px 0 0;
+}
+
+.pi-pic img {
+    height: 256px;
+    width: 256px;
+}
+
+.fa-solid.fa-heart {
+    color: red !important;
+}
+
+.product-pic-zoom{
+    height: 557.5px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+    .product-pic-zoom img {
+        height: 100%;
+        width: 100%;
+    }
+
+        .product-pic-zoom img[role="presentation"] {
+            height: 150% !important;
+            width: 150% !important;
+        }
+
+.product-thumbs-track {
+    width: 1148px;
+}
+
+    .product-thumbs-track img {
+        height: 100%;
+        width: 100%;
+    }
+
+.product-details .p-rating i {
+    color: white;
+}
+
+.product-details .social-sharing a {
+    font-size: 20px;
+}
+
+.PaymentOption {
+    display: none;
+}
+
+.con-info span i {
+    margin-right: 1px;
+}
+
+.site-pagination {
+    color: white;
+}
+
+.p-review {
+    color: white;
+}
+
+.fa-star {
+    cursor: pointer;
+}
+
+.footer-widget ul li a {
+    color: #8f8f8f !important;
+}
+
+.checkout-form .cf-title {   
+    margin-bottom: 20px;
+}
+
+.row.address-inputs p, .row.address-inputs h5{
+    color: white !important;
+}
+
+.cf-radio-btns label {
+    color: white;
+}
+
+.cf-radio-btns label:after {
+    background: white;
+}
+
+.checkout-cart .price-list li{
+    overflow: visible;
+}

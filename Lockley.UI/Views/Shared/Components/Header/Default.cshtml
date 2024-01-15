@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Category>
+
+<div id="preloder">
+	<div class="loader"></div>
+</div>
+
+<header class="header-section">
+	<div class="header-top">
+		@if (ViewBag.AuthLevel == 3 || ViewBag.AuthLevel == 2)
+		{
+			<a id="dashboardShortcut" class="btn btn-dark" asp-area="admin" asp-controller="home" asp-action="index"><i class="fa-solid fa-arrow-up-right-from-square"></i> Admin Dashboard</a>
+		}
+		else if (ViewBag.AuthLevel == 1)
+		{
+			<a class="btn btn-dark logoutShortcut" asp-area="admin" asp-controller="home" asp-action="logout">Logout</a>
+		}
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-2 text-center text-lg-left">
+					<a href="/" class="site-logo">
+						<img class="lockleylogo" src="/lockley/img/logo_1_bg.png" alt="Lockley Logo">
+					</a>
+				</div>
+				<div class="col-xl-6 col-lg-5">
+					<form class="header-search-form">
+						<input type="text" placeholder="Search on Lockley...">
+						<button><i class="flaticon-search"></i></button>
+					</form>
+				</div>
+				<div class="col-xl-4 col-lg-5">
+					<div class="user-panel">
+						<div class="up-item">
+							@if (ViewBag.AuthLevel == 3)
+							{
+								<div class="profile_info">
+									<i class="fa-regular fa-circle-user" style="position: relative; top: 3px"></i>
+									<span style="font-weight: bold; color: red">@User.Identity.Name</span>
+								</div>								
+							}
+							else if (ViewBag.AuthLevel == 2)
+							{
+								<div class="profile_info">
+									<i class="fa-regular fa-circle-user" style="position: relative; top: 3px"></i>
+									<span>@User.Identity.Name</span>
+								</div>
+							}
+							else if (ViewBag.AuthLevel == 1)
+							{
+								<div class="profile_info">
+									<i class="fa-regular fa-circle-user" style="position: relative; top: 3px"></i>
+									<span>@User.Identity.Name</span>
+								</div>
+							}
+							else
+							{
+								<a asp-area="admin" asp-controller="home" asp-action="login">
+									<i class="fa-regular fa-circle-user" style="position: relative; top: 3px"></i> <span style="text-decoration: underline">Sign In</span>
+								</a>
+								<span>or</span>
+								<a href="/login#signup"><span style="text-decoration: underline;">Create Account</span></a>
+							}
+						</div>
+						<div class="up-item">
+							<div class="shopping-card">
+								<i class="flaticon-bag"></i>
+								<span>0</span>
+							</div>
+							<a asp-controller="cart" asp-action="index">Shopping Cart</a>
+						</div>														
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="main-navbar" style="background-color: #151515;">
+		<div class="container">
+			<ul class="main-menu">
+				<li><a href="/">Home</a></li>
+
+				@foreach(Category c in Model.Where(x => x.ParentID == null))
+				{
+					<li>
+						<a href="#">@c.Name</a>
+						@if(c.SubCategories.Any())
+						{
+							<ul class="sub-menu">
+								@foreach(Category subC in c.SubCategories.OrderBy(x => x.Name))
+								{
+									<li>
+										<a asp-controller="category" asp-action="filter" asp-route-catname="@GeneralTools.URLAdjuster(c.Name)" asp-route-subcatname="@GeneralTools.URLAdjuster(subC.Name)" asp-route-subcatid="@subC.ID">@subC.Name</a>
+									</li>
+								}
+							</ul>
+						}
+					</li>
+				}
+			</ul>
+		</div>
+	</nav>
+</header>

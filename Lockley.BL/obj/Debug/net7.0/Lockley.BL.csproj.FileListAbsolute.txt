@@ -1,0 +1,15 @@
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\bin\Debug\net7.0\Lockley.BL.deps.json
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\bin\Debug\net7.0\Lockley.BL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\bin\Debug\net7.0\Lockley.BL.pdb
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\bin\Debug\net7.0\Lockley.DAL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\bin\Debug\net7.0\Lockley.DAL.pdb
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.csproj.AssemblyReference.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.AssemblyInfoInputs.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.AssemblyInfo.cs
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.csproj.CoreCompileInputs.cache
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.csproj.CopyComplete
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\refint\Lockley.BL.dll
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\Lockley.BL.pdb
+D:\Programming Languages\Frontend-Backend\ASP.NET Core\ASP.NET Core Files\Lockley\Lockley.BL\obj\Debug\net7.0\ref\Lockley.BL.dll

@@ -1,0 +1,40 @@
+﻿@model Category
+
+<section class="product-filter-section" style="padding-top: 70px">
+	<div class="container">
+		<div class="section-title">
+			<h2>BROWSE @Model.Name</h2>
+		</div>
+		<div class="row justify-content-center">
+			@foreach(Product p in Model.Products.Where(x => x.CategoryID == Model.ID))
+			{
+				<div class="col-lg-3 col-sm-6">
+					<div class="product-item">
+						<div class="pi-pic">
+							@if (p.ProductPictures.Select(x => x.FilePath).FirstOrDefault() != null)
+							{
+								<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="@p.ProductPictures.FirstOrDefault(x => x.ProductID == x.Product.ID).FilePath" alt="@p.Name"></a>								
+							}
+							else
+							{
+								<a asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><img src="/lockley/img/noimage.jpg" alt="no image"></a>
+							}
+
+							<div class="pi-links">
+								<a class="add-card" asp-controller="product" asp-action="detail" asp-route-name="@GeneralTools.URLAdjuster(p.Name)" asp-route-id="@p.ID"><i class="flaticon-bag"></i><span>SEE DETAILS</span></a>
+								<a class="wishlist-btn"><i class="fa-regular fa-heart"></i></a>
+							</div>
+						</div>
+						<div class="pi-text">
+							<h6>$@p.Price</h6>
+							<p>@p.Name</p>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="text-center pt-5">
+			<button class="site-btn sb-line sb-dark">LOAD MORE</button>
+		</div>
+	</div>
+</section>

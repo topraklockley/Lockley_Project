@@ -1,0 +1,64 @@
+﻿@model BrandVM
+
+<div class="right_col" role="main">
+	<div class="">
+		<div class="page-title">
+			<div class="title_left">
+				<h3>Form Elements</h3>
+			</div>			
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="row">
+			<div class="col-md-12 col-sm-12 ">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>Edit Brand</h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li>
+								<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+								<ul class="dropdown-menu" role="menu">
+									<li>
+										<a class="dropdown-item" href="#">Settings 1</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<br />
+						<form enctype="multipart/form-data" asp-controller="brand" asp-action="edit" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+							<input asp-for="@Model.Brand.ID" type="hidden" /> @* Veri eklemek yerine veriyi güncellemek için bu yapı kullanıldı. *@
+
+							<div class="item form-group">
+								<label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="@Model.Brand.Name">
+
+								</label>
+								<div class="col-md-6 col-sm-6 ">
+									<input class="form-control" asp-for="@Model.Brand.Name">
+									<span asp-validation-for="@Model.Brand.Name"></span>
+								</div>
+							</div>
+
+							<div class="ln_solid"></div>
+							<div class="item form-group">
+								<div class="col-md-6 col-sm-6 offset-md-3">
+									<a class="btn btn-primary" asp-controller="brand" asp-action="index" type="button">Cancel</a>
+									<button class="btn btn-primary" type="reset">Reset</button>
+									<button type="submit" class="btn btn-success">Edit</button>
+								</div>
+							</div>
+							@Html.AntiForgeryToken()
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
