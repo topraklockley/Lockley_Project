@@ -3,16 +3,16 @@ using Lockley.DAL.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args); // LC 101001
+var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews(); // LC 101002
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SQLContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("CS1"));
 }); // LC 101003
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>)); // LC 101004
+builder.Services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddCookie(cookieOptions =>
